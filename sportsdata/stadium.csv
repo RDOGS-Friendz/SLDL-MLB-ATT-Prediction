@@ -1,0 +1,95 @@
+StadiumID,Active,Name,City,State,Country,Capacity,Surface,LeftField,MidLeftField,LeftCenterField,MidLeftCenterField,CenterField,MidRightCenterField,RightCenterField,MidRightField,RightField,GeoLat,GeoLong,Altitude,HomePlateDirection,Type
+1,True,PETCO Park,San Diego,CA,USA,41164,Grass,334,351,367,402,396,403,378,351,322,32.7073,-117.1566,14,180,Outdoor
+2,True,Turner Field,Atlanta,GA,USA,49586,Grass,335,360,380,394,401,394,390,358,330,33.734805,-84.389996,939,150,Outdoor
+3,True,Salt River Fields at Talking Stick,,,,,,,,,,,,,,,,,,,
+4,True,Cubs Park,,,,,,,,,,,,,,,,,,,
+5,True,JetBlue Park,,,,,,,,,,,,,,,,,,,
+6,True,Hammond Stadium,,,,,,,,,,,,,,,,,,,
+7,True,Peoria Stadium,,,,,,,,,,,,,,,,,,,
+8,True,Citi Field,New York,NY,USA,41922,Grass,335,371,384,394,408,415,378,372,330,40.756944,-73.845833,13,165,Outdoor
+9,True,State Mutual Stadium,,,,,,,,,,,,,,,,,,,
+10,True,Progressive Field,Cleveland,OH,USA,37675,Grass,325,369,368,385,405,388,375,364,325,41.495833,-81.685278,673,180,Outdoor
+11,True,NL City,,,,,,,,,,,,,,,,,,,
+12,True,TBD,,,,,,,,,,,,,,,,,,,
+13,True,Oracle Park,San Francisco,CA,USA,41915,Grass,339,346,382,389,399,399,421,368,309,37.778611,-122.389167,8,90,Outdoor
+14,True,Target Field,Minneapolis,MN,USA,39021,Grass,339,355,377,390,404,392,367,344,328,44.981667,-93.278333,840,105,Outdoor
+15,True,McKechnie Field,,,,,,,,,,,,,,,,,,,
+16,True,Louisville Slugger Field,,,,,,,,,,,,,,,,,,,
+17,True,Champion Stadium,,,,,,,,,,,,,,,,,,,
+18,True,Tropicana Field,St. Petersburg,FL,USA,31042,AstroTurf,315,354,370,410,404,404,370,342,322,27.768333,-82.653333,41,135,Dome
+19,True,Miller Park,Milwaukee,WI,USA,41900,Grass,344,359,370,379,400,386,374,354,345,43.028333,-87.971111,602,45,RetractableDome
+20,True,AutoZone Park,,,,,,,,,,,,,,,,,,,
+21,True,Globe Life Park in Arlington,Arlington,TX,USA,48114,Grass,354,357,390,406,400,407,379,356,349,32.751389,-97.082778,549,45,Outdoor
+22,True,Oriole Park at Camden Yards,Baltimore,MD,USA,45971,Grass,333,368,384,400,410,400,373,341,318,39.283889,-76.621667,35,150,Outdoor
+23,True,Oakland Coliseum,Oakland,CA,USA,35067,Grass,330,367,362,388,400,388,362,367,330,37.751667,-122.200556,0,135,Outdoor
+24,True,Florida Auto Exchange Stadium,,,,,,,,,,,,,,,,,,,
+25,True,Guaranteed Rate Field,Chicago,IL,USA,40615,Grass,330,365,377,385,400,385,372,365,335,41.829908,-87.633889,594,45,Outdoor
+26,True,London Stadium,,,,,Grass,,,,,,,,,,51.538611,-0.016389,,,
+27,True,Wrigley Field,Chicago,IL,USA,40929,Grass,355,356,368,391,400,397,368,356,353,41.948038,-87.65568,599,150,Outdoor
+28,True,Angel Stadium of Anaheim,Anaheim,CA,USA,43250,Grass,330,348,376,387,408,383,362,359,330,33.800278,-117.882778,154,135,Outdoor
+29,True,PNC Park,Pittsburgh,PA,USA,38362,Grass,325,370,389,410,399,393,375,353,320,40.446944,-80.005833,724,60,Outdoor
+30,True,Tradition Field,,,,,,,,,,,,,,,,,,,
+31,True,Dodger Stadium,Los Angeles,CA,USA,56000,Grass,330,380,385,390,395,390,385,380,330,34.073611,-118.240646,501,150,Outdoor
+32,True,Tempe Diablo Stadium,,,,,,,,,,,,,,,,,,,
+33,True,Kauffman Stadium,Kansas City,MO,USA,37903,Grass,330,351,387,390,410,390,387,351,330,39.051098,-94.48,886,135,Outdoor
+34,True,Roger Dean Stadium,,,,,,,,,,,,,,,,,,,
+35,True,Yankee Stadium,New York,NY,USA,49642,Grass,318,357,399,400,408,396,385,346,314,40.829167,-73.926389,11,105,Outdoor
+36,True,Montgomery Riverwalk Stadium,,,,,,,,,,,,,,,,,,,
+37,True,Harbor Park,,,,,,,,,,,,,,,,,,,
+38,True,Osceola County Stadium,,,,,,,,,,,,,,,,,,,
+39,True,Bright House Field,,,,,,,,,,,,,,,,,,,
+40,True,Sydney Cricket Ground,,,,,,,,,,,,,,,,,,,
+41,True,Busch Stadium,St. Louis,MO,USA,43975,Grass,336,354,390,392,400,392,390,354,335,38.6225,-90.193056,438,120,Outdoor
+42,True,Rogers Centre,Toronto,ON,Canada,49282,AstroTurf,328,348,375,391,400,391,375,348,328,43.641389,-79.389167,268,210,RetractableDome
+43,True,Phoenix Municipal Stadium,,,,,,,,,,,,,,,,,,,
+44,True,Coors Field,Denver,CO,USA,50398,Grass,347,361,390,397,415,391,375,365,350,39.756111,-104.994167,5211,180,Outdoor
+45,True,Goodyear Ballpark,,,,,,,,,,,,,,,,,,,
+46,True,AL City,,,,,,,,,,,,,,,,,,,
+47,True,Pensacola Bayfront Stadium,,,,,,,,,,,,,,,,,,,
+48,True,Alamodome,,,,,,,,,,,,,,,,,,,
+49,True,Ed Smith Stadium,,,,,,,,,,,,,,,,,,,
+50,True,Fenway Park,Boston,MA,USA,37499,Grass,310,320,348,379,390,420,383,380,302,42.34625,-71.09775,16,135,Outdoor
+51,True,Citizens Bank Park,Philadelphia,PA,USA,43651,Grass,329,349,374,386,401,384,369,351,330,39.905833,-75.166389,19,165,Outdoor
+52,True,Regions Field,,,,,,,,,,,,,,,,,,,
+53,True,Nationals Park,Washington,DC,USA,41341,Grass,336,351,377,390,403,390,370,351,335,38.872778,-77.0075,23,150,Outdoor
+54,True,Chase Field,Phoenix,AZ,USA,48519,Grass,330,359,374,413,407,413,374,359,334,33.445278,-112.066944,1059,180,RetractableDome
+55,True,Scottsdale Stadium,,,,,,,,,,,,,,,,,,,
+56,True,Surprise Stadium,,,,,,,,,,,,,,,,,,,
+57,True,Marlins Park,Miami,FL,USA,36742,Grass,344,360,386,395,422,405,392,360,335,25.778056,-80.219722,6,105,RetractableDome
+58,True,Charlotte Sports Park,,,,,,,,,,,,,,,,,,,
+59,True,Maryvale Baseball Park,,,,,,,,,,,,,,,,,,,
+60,True,Space Coast Stadium,,,,,,,,,,,,,,,,,,,
+61,True,Camelback Ranch,,,,,,,,,,,,,,,,,,,
+62,True,Comerica Park,Detroit,MI,USA,41574,Grass,345,370,402,406,420,393,365,350,330,42.339167,-83.048611,602,30,Outdoor
+63,True,Minute Maid Park,Houston,TX,USA,41574,Grass,315,347,362,410,435,393,373,347,326,29.756944,-95.355556,20,210,RetractableDome
+64,True,Great American Ball Park,Cincinnati,OH,USA,42319,Grass,328,356,379,391,404,391,370,356,325,39.0975,-84.506667,489,45,Outdoor
+65,True,T-Mobile Park,Seattle,WA,USA,47574,Grass,331,358,390,399,405,391,387,353,327,47.591358,-122.333,17,135,RetractableDome
+66,True,George M. Steinbrenner Field,,,,,,,,,,,,,,,,,,,
+67,True,Joker Marchant Stadium,,,,,,,,,,,,,,,,,,,
+68,True,Truist Park,Atlanta,GA,USA,41149,Grass,335,375,385,402,400,402,375,350,325,33.890166,-84.468,1050,15,Outdoor
+69,True,Tokyo Dome,Tokyo,,Japan,45600,FieldTurf,,,,,,,,,,35.705658,139.751914,,,Dome
+70,True,Charles Schwab Field Omaha,Omaha,NE,USA,24000,Grass,335,,375,,408,,375,,335,41.267,-95.932,1023,,Outdoor
+71,True,Muncy Bank Ballpark at Historic Bowman Field,Williamsport,PA,USA,2366,Grass,323,,,,411,,,,331,41.242347,-77.047067,,,Outdoor
+72,True,BayCare Ballpark,Clearwater,FL,USA,,,,,,,,,,,,0.0,0.0,,,
+73,True,Quisqueya Stadium,Santo Domingo,,D.R.,,,,,,,,,,,,,,,,
+74,True,JetBlue Park at Fenway South,Lee County,FL,,,,,,,,,,,,,,,,,
+75,True,Sloan Park,Mesa,AZ,,,,,,,,,,,,,,,,,
+76,True,The Ballpark of The Palm Beaches,West Palm Beach,FL,,,,,,,,,,,,,,,,,
+77,True,Ballpark of Camelback Ranch,Phoenix,AZ,,,,,,,,,,,,,,,,,
+78,True,CoolToday Park,Kissimmee,FL,,,,,,,,,,,,,,,,,
+79,True,Field of Dreams,Dyersville,IA,USA,8000,Grass,335,,380,,400,,380,,335,42.497666,-91.054036,1007,160,Outdoor
+80,True,Dunedin Stadium,Dunedin,FL,,,,,,,,,,,,,,,,,
+81,True,Las Vegas Ballpark,Las Vegas,NV,,,,,,,,,,,,,,,,,
+82,True,Hiram Bithorn Stadium,San Juan,PR,,,,,,,,,,,,,,,,,
+83,True,Hohokam Stadium,Mesa,AZ,,,,,,,,,,,,,,,,,
+84,True,American Family Fields of Phoenix,Phoenix,AZ,,,,,,,,,,,,,,,,,
+85,True,Publix Field at Joker Marchant Stadium,Lakeland,FL,,,,,,,,,,,,,0.0,0.0,,,
+86,True,Clover Park,Port St. Lucie,FL,,,,,,,,,,,,,0.0,0.0,,,
+87,True,LECOM Park,Bradenton,FL,,,,,,,,,,,,,,,,,
+88,True,Globe Life Field,Arlington,TX,USA,40300,Grass,329,,372,,407,,374,,326,32.747361,-97.084167,549,150,RetractableDome
+89,True,Sahlen Field,Buffalo,NY,USA,16600,Grass,325,360,365,380,404,380,367,355,325,42.881111,-78.874167,600,40,Outdoor
+90,True,TD Ballpark,Dunedin,FL,USA,8500,Grass,328,,375,,400,,354,,327,28.003611,-82.786389,16,45,Outdoor
+91,True,BayCare Ballpark,Clearwater,FL,,,,,,,,,,,,,,,,,
+92,True,American Family Field,Milwaukee,WI,USA,41900,Grass,344,359,371,379,400,386,374,354,345,43.028333,-87.971111,602,45,RetractableDome
+93,True,loanDepot Park,Miami,FL,USA,36742,Grass,344,360,386,395,422,405,392,360,335,25.778056,-80.219722,6,105,RetractableDome
+94,False,Estadio Alfredo Harp Helu,Mexico City,,Mexico,20576,Turf,325,,,,400,,,,325,19.403569,-99.085253,,,Outdoor
