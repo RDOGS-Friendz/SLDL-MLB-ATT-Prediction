@@ -11,6 +11,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import TimeoutException
 import _pickle as cPickle
+from os.path import exists
 import random
 
 
@@ -42,11 +43,19 @@ def GetMetaGameInfo(html):
         at_night = 'Night Game' == at_night
         on_grass = 'on grass' == on_grass
         att = int(att.split(": ")[1].replace(",", ""))
-        venue = venue.split(": ")[1]    
+        venue = venue.split(": ")[1]
+        infos = list(soup.find('h2', text="Other Info").parent.parent.find("div", {"class" : "section_content"}).children)
+        infos = [i for i in infos if '\n' != i]
+        info_dict = dict()
+        for info in infos:
+            k,v = info.text.split(":", 1)
+            info_dict[k] = v
     gameInfo = {
         "have_att": have_att,
         "start_time": start_time, "duration": duration,
         "venue": venue, "at_night": at_night, "on_grass": on_grass,
+        'Start Time Weather': info_dict['Start Time Weather'],
+        'Umpires': info_dict['Umpires'],
         "att": att
     }
     return t1, t2, gameInfo
@@ -94,14 +103,23 @@ def GetTable(html, table_id):
 def setup_driver():
     options = Options()
     options.headless = False
+    
+    chrome_options = webdriver.ChromeOptions()
+
+    ### This blocks images and javascript requests
+    chrome_prefs = {
+        "profile.default_content_setting_values": {
+            "images": 2,
+        }
+    }
+    chrome_options.experimental_options["prefs"] = chrome_prefs
 
     driver = webdriver.Chrome(service=Service(ChromeDriverManager(
-    ).install()), options=options)
-    driver.set_page_load_timeout(5)
+    ).install()), options=options)#, chrome_options=chrome_options)
+    driver.set_page_load_timeout(4)
     return driver
 
-def scratch_meta_page():
-    url = "https://www.baseball-reference.com/leagues/majors/2021-schedule.shtml"
+def scratch_meta_page(url):
     driver = setup_driver()
     
     while True:
@@ -116,12 +134,12 @@ def scratch_meta_page():
         except TimeoutException:
             continue
         break
-    print("get meta data")
+    print("get meta page data")
     return driver.page_source
 
 
 def scratch_single_page(url):
-    print(f"Scratch {url}")
+    print(f"Scratching {url}")
     driver=setup_driver()
 
     # load page for 4 sec
@@ -156,27 +174,43 @@ def scratch_single_page(url):
 
     return gameInfo
 
-# from the index page get all game url
-html = scratch_meta_page()
-soup = BeautifulSoup(html, "html.parser")
-games = soup.findAll("p", {"class": "game"})
-random.shuffle(games)
 
-# scratch the rest
-for game in games:
+
+# from the index page get all game url
+meta_page_urls = [f"https://www.baseball-reference.com/leagues/majors/{year}-schedule.shtml" for year in ["2022", "2021", "2019", "2018", "2017", "2016", "2015"]]
+
+years = ["2022", "2021", "2019", "2018", "2017", "2016", "2015"]
+for year in years:
+    print(f"get games from year: {year}")
     # load previous scratched games data
-    with open("gamesData.pickle", "rb") as output_file:
-        data = cPickle.load(output_file)
-    
-    game_url = "https://www.baseball-reference.com" + game.find("em").find("a")['href']
-    if game_url not in data:
-        #scratch game
-        try:
-            gameInfo = scratch_single_page(game_url)
-        except:
-            continue
+    if exists(f"gamesData{year}.pickle"):
+        with open(f"gamesData{year}.pickle", "rb") as output_file:
+            data = cPickle.load(output_file)
+    else:
+        data = dict()
         
-        # save to data
-        data[game_url] = gameInfo
-        with open("gamesData.pickle", "wb") as output_file:
-            cPickle.dump(data, output_file)
+    html = scratch_meta_page(f"https://www.baseball-reference.com/leagues/majors/{year}-schedule.shtml")
+    soup = BeautifulSoup(html, "html.parser")
+    games = soup.findAll("p", {"class": "game"})
+
+    # scratch the rest
+    for game in games:
+        for i in range(5):# max retry 5 time
+            game_url = "https://www.baseball-reference.com" + game.find("em").find("a")['href']
+            if game_url not in data:
+                #scratch game
+                try:
+                    gameInfo = scratch_single_page(game_url)
+                    # save to data
+                    data[game_url] = gameInfo
+                    with open(f"gamesData{year}.pickle", "wb") as output_file:
+                        cPickle.dump(data, output_file)
+                    break
+                except KeyboardInterrupt:
+                    raise
+                except:
+                    print("something wrong, retry scrap this page")
+                    continue
+            else:
+                break
+                
