@@ -11,6 +11,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import TimeoutException
 import _pickle as cPickle
+import random
 
 
 def GetMetaGameInfo(html):
@@ -155,27 +156,27 @@ def scratch_single_page(url):
 
     return gameInfo
 
-
 # from the index page get all game url
 html = scratch_meta_page()
 soup = BeautifulSoup(html, "html.parser")
 games = soup.findAll("p", {"class": "game"})
-
-data = dict()
-# load previous scratched games data
-with open("gamesData.pickle", "rb") as output_file:
-    data = cPickle.load(output_file)
+random.shuffle(games)
 
 # scratch the rest
 for game in games:
-    game_url = "https://www.baseball-reference.com" + game.find("em").find("a")['href']
+    # load previous scratched games data
+    with open("gamesData.pickle", "rb") as output_file:
+        data = cPickle.load(output_file)
     
-    # ignore if already have data
-    if game_url in data:
-        continue
-    #scratch game
-    gameInfo = scratch_single_page(game_url)
-    # save to data
-    data[game_url] = gameInfo
-    with open("gamesData.pickle", "wb") as output_file:
-        cPickle.dump(data, output_file)
+    game_url = "https://www.baseball-reference.com" + game.find("em").find("a")['href']
+    if game_url not in data:
+        #scratch game
+        try:
+            gameInfo = scratch_single_page(game_url)
+        except:
+            continue
+        
+        # save to data
+        data[game_url] = gameInfo
+        with open("gamesData.pickle", "wb") as output_file:
+            cPickle.dump(data, output_file)
