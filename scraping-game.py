@@ -14,7 +14,6 @@ import _pickle as cPickle
 from os.path import exists
 import random
 
-
 def GetMetaGameInfo(html):
     soup = BeautifulSoup(html, "html.parser")
     scorebox = soup.find("div", {"class": "scorebox"})
@@ -33,6 +32,8 @@ def GetMetaGameInfo(html):
     have_att = "Attendance" in att
     at_night = None
     on_grass = None
+    info_dict = dict()
+    print(att)
     if have_att:
         date = datetime.strptime(date, "%A, %B %d, %Y")
         start_time = datetime.strptime("".join(start_time.split(" ")[2:4]).replace(".", ""), "%I:%M%p")
@@ -46,7 +47,6 @@ def GetMetaGameInfo(html):
         venue = venue.split(": ")[1]
         infos = list(soup.find('h2', text="Other Info").parent.parent.find("div", {"class" : "section_content"}).children)
         infos = [i for i in infos if '\n' != i]
-        info_dict = dict()
         for info in infos:
             k,v = info.text.split(":", 1)
             info_dict[k] = v
@@ -54,8 +54,8 @@ def GetMetaGameInfo(html):
         "have_att": have_att,
         "start_time": start_time, "duration": duration,
         "venue": venue, "at_night": at_night, "on_grass": on_grass,
-        'Start Time Weather': info_dict['Start Time Weather'],
-        'Umpires': info_dict['Umpires'],
+        'Start Time Weather': "" if 'Start Time Weather' not in info_dict else  info_dict['Start Time Weather'],
+        'Umpires': "" if "Umpires" not in info_dict else info_dict['Umpires'],
         "att": att
     }
     return t1, t2, gameInfo
@@ -174,43 +174,47 @@ def scratch_single_page(url):
 
     return gameInfo
 
-
-
-# from the index page get all game url
-meta_page_urls = [f"https://www.baseball-reference.com/leagues/majors/{year}-schedule.shtml" for year in ["2022", "2021", "2019", "2018", "2017", "2016", "2015"]]
-
-years = ["2022", "2021", "2019", "2018", "2017", "2016", "2015"]
-for year in years:
-    print(f"get games from year: {year}")
-    # load previous scratched games data
-    if exists(f"gamesData{year}.pickle"):
-        with open(f"gamesData{year}.pickle", "rb") as output_file:
-            data = cPickle.load(output_file)
-    else:
-        data = dict()
+def scrap_by_years(years):
+    for year in years:
+        print(f"get games from year: {year}")
+        # load previous scratched games data
+        if exists(f"gamesData{year}.pickle"):
+            with open(f"gamesData{year}.pickle", "rb") as output_file:
+                data = cPickle.load(output_file)
+        else:
+            data = dict()
         
-    html = scratch_meta_page(f"https://www.baseball-reference.com/leagues/majors/{year}-schedule.shtml")
-    soup = BeautifulSoup(html, "html.parser")
-    games = soup.findAll("p", {"class": "game"})
-
-    # scratch the rest
-    for game in games:
-        for i in range(5):# max retry 5 time
-            game_url = "https://www.baseball-reference.com" + game.find("em").find("a")['href']
-            if game_url not in data:
-                #scratch game
-                try:
-                    gameInfo = scratch_single_page(game_url)
-                    # save to data
-                    data[game_url] = gameInfo
-                    with open(f"gamesData{year}.pickle", "wb") as output_file:
-                        cPickle.dump(data, output_file)
+        # get all year's game from schedule page
+        html = scratch_meta_page(f"https://www.baseball-reference.com/leagues/majors/{year}-schedule.shtml")
+        soup = BeautifulSoup(html, "html.parser")
+        games = soup.findAll("p", {"class": "game"})
+        print(f"have {len(games)} to scrap")
+        # scratch the rest
+        for game in games:
+            for i in range(5):# max retry 5 time
+                game_url = "https://www.baseball-reference.com" + game.find("em").find("a")['href']
+                if game_url not in data:
+                    #scratch game
+                    try:
+                        gameInfo = scratch_single_page(game_url)
+                        # save to data
+                        data[game_url] = gameInfo
+                        with open(f"gamesData{year}.pickle", "wb") as output_file:
+                            cPickle.dump(data, output_file)
+                        break
+                    except KeyboardInterrupt:
+                        raise
+                    # except Exception:
+                    #     print("something wrong, retry scrap this page")
+                    #     continue
+                else:
                     break
-                except KeyboardInterrupt:
-                    raise
-                except:
-                    print("something wrong, retry scrap this page")
-                    continue
-            else:
-                break
-                
+                    
+
+# year to scrap
+# years = ["2022", "2021", "2019", "2018", "2017", "2016", "2015"]
+y1 = ["2022", "2021"]
+y2 = ["2019", "2018"]
+y3 = ["2017", "2016", "2015"]
+
+scrap_by_years(y3)
