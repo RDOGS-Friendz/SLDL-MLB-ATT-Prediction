@@ -1,0 +1,59 @@
+,Date,Tm,Home_Away,Opp,W/L,R,RA,Inn,W-L,Rank,GB,Win,Loss,Save,Time,D/N,Attendance,cLI,Streak,Orig. Scheduled
+1,"Friday, Jul 24",STL,Home,PIT,W,5.0,4.0,9.0,1-0,1.0,Tied,Flaherty,Musgrove,Kim,2:52,N,,1.15,1,
+2,"Saturday, Jul 25",STL,Home,PIT,W,9.0,1.0,9.0,2-0,1.0,up 1.0,Wainwright,Williams,None,2:55,D,,1.20,2,
+3,"Sunday, Jul 26",STL,Home,PIT,L,1.0,5.0,9.0,2-1,1.0,Tied,Keller,Hudson,None,2:56,D,,1.20,-1,
+4,"Tuesday, Jul 28",STL,@,MIN,L,3.0,6.0,9.0,2-2,2.0,1.5,Bailey,Martinez,Romo,2:42,N,,1.08,-2,
+5,"Wednesday, Jul 29",STL,@,MIN,L,0.0,3.0,9.0,2-3,3.0,1.5,Hill,Ponce de Leon,Rogers,2:53,N,,1.08,-3,
+6,"Saturday, Aug 15 (1)",STL,@,CHW,W,5.0,1.0,7.0,3-3,2.0,3.5,Wainwright,Giolito,None,2:19,D,,1.15,1,2020-08-13 (Covid; Covid; (Game2))
+7,"Saturday, Aug 15 (2)",STL,@,CHW,W,6.0,3.0,7.0,4-3,2.0,3.5,Cabrera,Marshall,Miller,2:30,N,,1.17,2,
+8,"Sunday, Aug 16",STL,@,CHW,L,2.0,7.0,9.0,4-4,2.0,3.5,Keuchel,Hudson,None,2:52,D,,1.16,-1,
+9,"Monday, Aug 17 (1)",STL,@,CHC,W,3.0,1.0,7.0,5-4,2.0,3.5,Gallegos,Hendricks,Miller,2:03,D,,1.27,1,2020-08-07 (Covid; Played at CHN; SLN was home team; (Game2))
+10,"Monday, Aug 17 (2)",STL,@,CHC,L,4.0,5.0,7.0,5-5,2.0,3.5,Underwood,Webb,Jeffress,2:33,N,,1.31,-1,
+11,"Tuesday, Aug 18",STL,@,CHC,L,3.0,6.0,9.0,5-6,2.0,4.5,Darvish,Ponce de Leon,Wick,4:09,N,,1.32,-2,
+12,"Wednesday, Aug 19 (1)",STL,@,CHC,W,9.0,3.0,7.0,6-6,3.0,4.5,Webb,Mills,None,3:01,D,,1.28,1,2020-08-08 (Covid; Played at CHN; SLN was home team; (Game2))
+13,"Wednesday, Aug 19 (2)",STL,@,CHC,L,2.0,4.0,7.0,6-7,3.0,4.5,Jeffress,Miller,Kimbrel,2:26,N,,1.35,-1,
+14,"Thursday, Aug 20",STL,Home,CIN,W-wo,5.0,4.0,9.0,7-7,2.0,4.0,Elledge,Iglesias,None,3:12,N,,1.34,1,
+15,"Friday, Aug 21",STL,Home,CIN,L,2.0,4.0,9.0,7-8,2.0,4.0,Lorenzen,Cabrera,Iglesias,3:10,N,,1.39,-1,
+16,"Saturday, Aug 22",STL,Home,CIN,W,3.0,0.0,9.0,8-8,2.0,3.0,Kim,Miley,Gallegos,2:15,N,,1.38,1,
+17,"Sunday, Aug 23",STL,Home,CIN,W,6.0,2.0,9.0,9-8,2.0,3.0,Cabrera,Mahle,None,3:03,D,,1.44,2,
+18,"Monday, Aug 24",STL,Home,KCR,W,9.0,3.0,9.0,10-8,2.0,3.0,Flaherty,Keller,None,3:10,N,,1.25,3,
+19,"Tuesday, Aug 25",STL,Home,KCR,L,4.0,5.0,9.0,10-9,2.0,3.0,Staumont,Gant,Rosenthal,3:07,N,,1.26,-1,
+20,"Wednesday, Aug 26",STL,Home,KCR,W-wo,6.0,5.0,9.0,11-9,2.0,2.0,Reyes,Rosario,None,3:37,N,,1.30,1,
+21,"Thursday, Aug 27 (1)",STL,Home,PIT,L,3.0,4.0,8.0,11-10,2.0,3.0,Stratton,Gant,Rodriguez,2:48,D,,1.32,-1,2020-08-10 (Covid; (Game1))
+22,"Thursday, Aug 27 (2)",STL,Home,PIT,L,0.0,2.0,7.0,11-11,2.0,3.0,Ponce,Oviedo,Turley,2:02,N,,1.31,-2,2020-08-11 (Covid; (Game2))
+23,"Friday, Aug 28",STL,Home,CLE,L,2.0,14.0,9.0,11-12,2.0,3.0,Hill,Ponce de Leon,Plutko,3:51,N,,1.32,-3,
+24,"Saturday, Aug 29",STL,Home,CLE,L,1.0,2.0,12.0,11-13,2.0,3.5,Wittgren,Reyes,Hand,4:06,D,,1.31,-4,
+25,"Sunday, Aug 30",STL,Home,CLE,W,7.0,2.0,9.0,12-13,2.0,3.5,Wainwright,Civale,None,2:24,D,,1.28,1,
+26,"Monday, Aug 31",STL,@,CIN,W,7.0,5.0,9.0,13-13,2.0,3.0,Hudson,DeSclafani,Gallegos,3:09,N,,1.52,2,
+27,"Tuesday, Sep 1",STL,@,CIN,W,16.0,2.0,9.0,14-13,2.0,3.0,Kim,Gray,None,3:27,N,,1.52,3,
+28,"Wednesday, Sep 2",STL,@,CIN,L-wo,3.0,4.0,9.0,14-14,2.0,4.0,Iglesias,Gallegos,None,2:55,N,,1.48,-1,
+29,"Friday, Sep 4",STL,@,CHC,L,1.0,4.0,9.0,14-15,2.0,4.5,Darvish,Flaherty,Jeffress,3:05,N,,1.50,-2,
+30,"Saturday, Sep 5 (1)",STL,@,CHC,W,4.0,2.0,7.0,15-15,2.0,2.5,Wainwright,Alzolay,Gallegos,2:40,D,,1.46,1,2020-08-09 (Covid; Played at CHN; SLN was home team; (Game2))
+31,"Saturday, Sep 5 (2)",STL,@,CHC,W,5.0,1.0,7.0,16-15,2.0,2.5,Helsley,Rea,None,2:16,N,,1.55,2,
+32,"Sunday, Sep 6",STL,@,CHC,W,7.0,3.0,9.0,17-15,2.0,1.5,Hudson,Lester,None,3:17,N,,1.59,3,
+33,"Monday, Sep 7",STL,@,CHC,L,1.0,5.0,9.0,17-16,2.0,2.5,Hendricks,Oviedo,None,2:51,D,,1.61,-1,
+34,"Tuesday, Sep 8 (1)",STL,Home,MIN,L,3.0,7.0,7.0,17-17,2.0,3.0,Berrios,Martinez,None,2:31,D,,1.47,-2,
+35,"Tuesday, Sep 8 (2)",STL,Home,MIN,W,6.0,4.0,7.0,18-17,2.0,3.0,Cabrera,Dobnak,Gallegos,2:48,N,,1.52,1,2020-09-09 (Schedule change (to give both teams an off day); (Game 2))
+36,"Thursday, Sep 10 (1)",STL,Home,DET,W,12.0,2.0,7.0,19-17,2.0,3.0,Flaherty,Skubal,None,2:34,D,,1.52,2,2020-08-05 (Covid; (Game1))
+37,"Thursday, Sep 10 (2)",STL,Home,DET,L,3.0,6.0,7.0,19-18,2.0,3.0,Cisnero,Gallegos,Garcia,2:40,D,,1.49,-1,2020-08-06 (Covid; (Game2))
+38,"Friday, Sep 11",STL,Home,CIN,L,1.0,3.0,9.0,19-19,2.0,3.0,Castillo,Wainwright,None,2:24,N,,1.63,-2,
+39,"Saturday, Sep 12",STL,Home,CIN,W,7.0,1.0,9.0,20-19,2.0,3.0,Hudson,Antone,None,3:08,N,,1.81,1,
+40,"Sunday, Sep 13",STL,Home,CIN,L,5.0,10.0,9.0,20-20,2.0,4.0,Bradley,Gant,Iglesias,3:42,D,,1.70,-1,
+41,"Monday, Sep 14 (1)",STL,@,MIL,L-wo,1.0,2.0,8.0,20-21,2.0,4.0,Peralta,Helsley,None,2:37,D,,1.89,-2,2020-07-31 (Covid; (Game2))
+42,"Monday, Sep 14 (2)",STL,@,MIL,W,3.0,2.0,9.0,21-21,2.0,4.0,Cabrera,Topa,Webb,3:42,N,,2.00,1,
+43,"Tuesday, Sep 15",STL,@,MIL,L,3.0,18.0,9.0,21-22,2.0,5.0,Anderson,Flaherty,None,3:09,N,,1.98,-1,
+44,"Wednesday, Sep 16 (1)",STL,@,MIL,W,4.0,2.0,7.0,22-22,2.0,5.5,Wainwright,Woodruff,None,2:01,D,,2.04,1,2020-08-01 (Covid; (Game2))
+45,"Wednesday, Sep 16 (2)",STL,@,MIL,L,0.0,6.0,7.0,22-23,2.0,5.5,Peralta,Oviedo,None,2:01,N,,2.07,-1,
+46,"Thursday, Sep 17",STL,@,PIT,L,1.0,5.0,9.0,22-24,3.0,6.0,Brault,Gomber,None,2:25,N,,1.90,-2,
+47,"Friday, Sep 18 (1)",STL,@,PIT,W,6.0,5.0,7.0,23-24,2.0,5.5,Reyes,Williams,Helsley,3:08,D,,1.86,1,2020-08-12 (Covid; Played at PIT; SLN was home team; (Game2))
+48,"Friday, Sep 18 (2)",STL,@,PIT,W,7.0,2.0,7.0,24-24,2.0,5.5,Miller,Kuhl,None,2:19,N,,2.05,2,
+49,"Saturday, Sep 19",STL,@,PIT,W,5.0,4.0,9.0,25-24,2.0,4.5,Woodford,Howard,Cabrera,3:06,N,,2.09,3,
+50,"Sunday, Sep 20",STL,@,PIT,W,2.0,1.0,9.0,26-24,2.0,3.5,Flaherty,Holland,Miller,2:50,D,,2.02,4,
+51,"Monday, Sep 21",STL,@,KCR,L,1.0,4.0,9.0,26-25,2.0,4.5,Staumont,Wainwright,Holland,2:55,N,,1.81,-1,
+52,"Tuesday, Sep 22",STL,@,KCR,W,5.0,0.0,9.0,27-25,2.0,3.5,Gomber,Singer,None,3:09,N,,1.91,1,
+53,"Wednesday, Sep 23",STL,@,KCR,L,3.0,12.0,9.0,27-26,2.0,3.5,Duffy,Martinez,None,2:50,N,,1.59,-1,
+54,"Thursday, Sep 24",STL,Home,MIL,W,4.0,2.0,9.0,28-26,2.0,2.5,Kim,Burnes,Miller,3:43,N,,2.57,1,
+55,"Friday, Sep 25 (1)",STL,Home,MIL,L,0.0,3.0,7.0,28-27,2.0,3.0,Williams,Flaherty,Hader,2:12,D,,1.95,-1,2020-08-02 (Covid; Played at SLN; MIL was home team; (Game2))
+56,"Friday, Sep 25 (2)",STL,Home,MIL,W,9.0,1.0,7.0,29-27,2.0,3.0,Ponce de Leon,Lindblom,None,2:36,N,,2.90,1,
+57,"Saturday, Sep 26",STL,Home,MIL,L,0.0,3.0,9.0,29-28,2.0,3.0,Woodruff,Wainwright,Hader,2:38,N,,1.45,-1,
+58,"Sunday, Sep 27",STL,Home,MIL,W,5.0,2.0,9.0,30-28,2.0,3.0,Gallegos,Anderson,Reyes,2:58,D,,1.45,1,
