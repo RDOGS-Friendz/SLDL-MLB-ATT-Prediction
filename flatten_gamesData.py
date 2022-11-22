@@ -121,7 +121,7 @@ def flatten_games(games, year):
             games_flatten[game_id]['team1_pre_win_pct'] = 0
         else:
             games_flatten[game_id]['team1_pre_win_pct'] = games[game_id]['team1']['pre_win'] / (games[game_id]['team1']['pre_win'] + games[game_id]['team1']['pre_loss'])
-        games_flatten[game_id]['players'] = games[game_id]['team1']['player_df']
+        games_flatten[game_id]['team1_players'] = games[game_id]['team1']['player_df']
 
         if games[game_id]['team1']['pre_win'] > teams_streak[games[game_id]['team1']['name']]['pre_win']:
             if teams_streak[games[game_id]['team1']['name']]['cumulative_streak'] < 0:
@@ -149,7 +149,7 @@ def flatten_games(games, year):
             games_flatten[game_id]['team2_pre_win_pct'] = 0
         else:
             games_flatten[game_id]['team2_pre_win_pct'] = games[game_id]['team2']['pre_win'] / (games[game_id]['team2']['pre_win'] + games[game_id]['team2']['pre_loss'])
-        games_flatten[game_id]['players'] = games[game_id]['team2']['player_df']
+        games_flatten[game_id]['team2_players'] = games[game_id]['team2']['player_df']
 
         if games[game_id]['team2']['pre_win'] > teams_streak[games[game_id]['team2']['name']]['pre_win']:
             if teams_streak[games[game_id]['team2']['name']]['cumulative_streak'] < 0:
