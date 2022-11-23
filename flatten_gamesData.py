@@ -5,7 +5,7 @@ import re
 
 from itertools import islice
 
-precipitation_values_list = [" Drizzle.", "' No Precipitation.", " Rain."]
+precipitation_values_list = [" Drizzle.", " No Precipitation.", " Rain."]
 
 usa_federal_holidays = {
     '2015': ['1/1', '1/19', '2/16', '5/25', '7/4', '9/7', '10/12', '11/11' '11/26', '12/25'],
@@ -84,27 +84,27 @@ def flatten_games(games, year):
             temperature = int(re.findall(r'\d+', games[game_id]['meta_game_info']['Start Time Weather'].split(',')[0])[0])
             # use regex to get wind speed, which is only number in the string
             wind_speed = int(re.findall(r'\d+', games[game_id]['meta_game_info']['Start Time Weather'].split(',')[1])[0])
+            weather = (games[game_id]['meta_game_info']['Start Time Weather'].split(',')[2]).strip()
         except:
             print(f"cannot get temperature and wind_speed from weather description: {games[game_id]['meta_game_info']['Start Time Weather']}, automatically set to 0")
         
         # get comma count in Start Time Weather
         comma_count = games[game_id]['meta_game_info']['Start Time Weather'].count(',')
+
         if comma_count < 3:
-            weather = "in Dome"
-            precipitation = 3
+            precipitation = 4
         else:
-            weather = games[game_id]['meta_game_info']['Start Time Weather'].split(',')[2]
             precipitation_str = games[game_id]['meta_game_info']['Start Time Weather'].split(',')[3]
-            match_index = 0
+            match_index = -1
             for i in range(len(precipitation_values_list)):
                 if precipitation_values_list[i] == precipitation_str:
                     match_index = i
                     break
             precipitation = match_index
             # ensure precipitation is in range 0 to 3
-            if precipitation > 3 or precipitation < 0:
+            if precipitation == -1:
                 # something wrong with precipitation, use input to get precipitation
-                print(f"precipitation is not in range 0 to 3: {precipitation}")
+                print(f"cannot get precipitation from weather description: {games[game_id]['meta_game_info']['Start Time Weather']}")
                 precipitation = input("please input precipitation: ")
 
         games_flatten[game_id]['temperature'] = temperature
@@ -175,7 +175,8 @@ if __name__ == "__main__":
     # combine all games from 2015 to 2022 except 2020 and 2021
     games = {}
     for year in range(2015, 2022):
-        if year == 2021 or year == 2020:
+        print(year)
+        if year == 2020 or year == 2021:
             continue
         cur_year_games = pd.read_pickle(f"gamesData{year}.pickle")
         cur_year_flatten_games = flatten_games(cur_year_games, str(year))
@@ -183,7 +184,14 @@ if __name__ == "__main__":
     # print out the total number of games
     print(f"Total number of games: {len(games)}")
     # save the games to a pickle file
-    with open("flatten_games.pickle", "wb") as f:
+    with open("trainset.pickle", "wb") as f:
         pickle.dump(games, f)
-
+    
+    # for 2022
+    games = {}
+    cur_year_games = pd.read_pickle(f"gamesData2022.pickle")
+    cur_year_flatten_games = flatten_games(cur_year_games, str(year))
+    games.update(cur_year_flatten_games)
+    with open("testset.pickle", "wb") as f:
+        pickle.dump(games, f)
     print("Done!")
