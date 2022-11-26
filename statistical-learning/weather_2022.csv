@@ -51,6 +51,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+0,1
 0,0
 0,0
 0,0
@@ -65,6 +66,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+0,1
 0,0
 0,0
 0,0
@@ -76,6 +78,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+1,0
 0,0
 0,0
 0,0
@@ -162,6 +165,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+1,0
 0,0
 0,0
 0,0
@@ -243,6 +247,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+0,1
 0,0
 0,0
 0,0
@@ -334,6 +339,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+1,0
 0,0
 0,0
 0,0
@@ -462,6 +468,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+0,1
 0,0
 0,0
 0,0
@@ -625,6 +632,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+0,1
 0,0
 0,0
 0,0
@@ -1442,6 +1450,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+1,0
 0,0
 0,0
 0,0
@@ -1580,6 +1589,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+0,1
 0,0
 0,0
 0,0
@@ -1797,6 +1807,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+0,1
 0,0
 0,0
 0,0
@@ -1838,6 +1849,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+1,0
 0,0
 0,0
 0,0
@@ -2189,6 +2201,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+0,1
 0,0
 0,0
 0,0
@@ -2208,6 +2221,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+1,0
 0,0
 0,0
 0,0
@@ -2269,6 +2283,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+1,0
 0,0
 0,0
 0,0
@@ -2329,6 +2344,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+0,1
 0,0
 0,0
 0,0
@@ -2344,6 +2360,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+1,0
 0,0
 0,0
 0,0
@@ -2357,6 +2374,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
+0,1
 0,0
 0,0
 0,0
@@ -2372,25 +2390,7 @@ weather_Rain,weather_Drizzle
 0,0
 0,0
 0,0
-0,0
-0,0
-0,0
-0,0
-0,0
-0,0
-0,0
-0,0
-0,0
-0,0
-0,0
-0,0
-0,0
-0,0
-0,0
-0,0
-0,0
-0,0
-0,0
+0,1
 0,0
 0,0
 0,0
