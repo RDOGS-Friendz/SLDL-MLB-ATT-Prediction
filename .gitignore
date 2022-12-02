@@ -1,4 +1,6 @@
 # BC
+models/bagging/20221125_*_1000.pkl
+models/bagging/20221127_*_299.pkl
 models/bagging/20221127_bagging_model_less_features_299.pkl
 
 # ethan
