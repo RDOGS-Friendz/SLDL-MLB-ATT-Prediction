@@ -64,6 +64,7 @@ wsproto = "==1.2.0"
 "zope.interface" = "==5.5.1"
 
 [dev-packages]
+autopep8 = "*"
 
 [requires]
 python_version = "3.9"
