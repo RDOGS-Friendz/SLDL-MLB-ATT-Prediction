@@ -140,9 +140,9 @@ for i, model in enumerate(input_params["model"]):
         st.markdown(f"#### {model}")
         source = data.barley()
 
-        tmp_plt = alt.Chart(source).mark_bar(color=COLOR_BLUE).encode(
+        tmp_plt = alt.Chart(source).mark_bar(color=COLOR_BLUE).encode(  # type: ignore
             x='sum(yield):Q',
-            y=alt.Y('site:N', sort='-x')
+            y=alt.Y('site:N', sort='-x')  # type: ignore
         )
 
         st.altair_chart(tmp_plt, use_container_width=True)
