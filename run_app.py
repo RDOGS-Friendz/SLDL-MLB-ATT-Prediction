@@ -51,15 +51,43 @@ input_params = form.create_form(team_lst=team_lst, weather_lst=weather_lst,
 
 # --------------------------------------------------------------------------------------------------
 # process input
+# process data
+df_home = baseline_df[baseline_df["team2_name"] ==
+                      input_params["home_team"]]
+df_home["date"] = pd.to_datetime(df_home["start_time"].apply(
+    lambda x: datetime.datetime.strptime(x, "%Y-%m-%d %H:%M:%S").date()))
+
+
+# show attendance prediction (with comparison to avg attendance in previous years)
+# _, col_1, _,  col_2, _ = st.columns([0.5, 1, 0.5, 1, 0.5])
+st.markdown("### Attendance Prediction")
+
+target_date, baseline_value, real_value = dashboard.get_baseline_value(
+    df_home, input_params["date"], input_params["home_team"])  # type: ignore
 
 # processed dict
-processed_input = {"Date": input_params["date"].strftime("%A, %B %d, %Y"),
-                   "Start Hour": input_params["start_hour"],
-                   "Playoff": input_params["season_type"],
-                   "Home Team": f'{team_dict[input_params["home_team"]]} ({input_params["home_team"]})',
-                   "Away Team": f'{team_dict[input_params["away_team"]]} ({input_params["away_team"]})',
-                   "Weather": input_params["weather"],
-                   "Temperature": input_params["temperature"], "Model": input_params["model"]}
+if target_date == input_params["date"]:
+    processed_input = {"Date": input_params["date"].strftime("%A, %B %d, %Y"),
+                       #    "Nearest Date": target_date.strftime("%A, %B %d, %Y"),
+                       "Start Hour": input_params["start_hour"],
+                       "Playoff": input_params["season_type"],
+                       "Home Team": f'{team_dict[input_params["home_team"]]} ({input_params["home_team"]})',
+                       "Away Team": f'{team_dict[input_params["away_team"]]} ({input_params["away_team"]})',
+                       "Weather": input_params["weather"],
+                       "Temperature": input_params["temperature"],
+                       "Actual Attendance": f'{real_value:,} ppl',
+                       "Model": input_params["model"]}
+else:
+    processed_input = {"Date": input_params["date"].strftime("%A, %B %d, %Y"),
+                       "Nearest Date": target_date.strftime("%A, %B %d, %Y"),
+                       "Start Hour": input_params["start_hour"],
+                       "Playoff": input_params["season_type"],
+                       "Home Team": f'{team_dict[input_params["home_team"]]} ({input_params["home_team"]})',
+                       "Away Team": f'{team_dict[input_params["away_team"]]} ({input_params["away_team"]})',
+                       "Weather": input_params["weather"],
+                       "Temperature": input_params["temperature"],
+                       "Actual Attendance": f'{real_value:,} ppl',
+                       "Model": input_params["model"]}
 
 # model input
 _model_input = mdl.streamlit_to_model(input_params)  # type: ignore
@@ -74,21 +102,6 @@ st.markdown(
 with st.expander("ℹ Input Parameters Information", expanded=True):
     cd.display_dict(processed_input)
 
-
-# process data
-df_home = baseline_df[baseline_df["team2_name"] ==
-                      input_params["home_team"]]
-df_home["date"] = pd.to_datetime(df_home["start_time"].apply(
-    lambda x: datetime.datetime.strptime(x, "%Y-%m-%d %H:%M:%S").date()))
-
-
-# show attendance prediction (with comparison to avg attendance in previous years)
-# _, col_1, _,  col_2, _ = st.columns([0.5, 1, 0.5, 1, 0.5])
-st.markdown("### Attendance Prediction")
-
-target_date, baseline_value = dashboard.get_baseline_value(
-    df_home, input_params["date"], input_params["home_team"])  # type: ignore
-
 metric_cols = st.columns([1 for _ in range(len(input_params['model']) + 1)])
 
 for i, model in enumerate(input_params["model"]):
@@ -96,7 +109,7 @@ for i, model in enumerate(input_params["model"]):
         # make sure that the model has the str type
         _tmp_model = mdl.Model(str(model))
         val = _tmp_model.predict(_model_input)[0]
-        delta = val - baseline_value
+        delta = val - real_value
 
         cd.display_dial(title=f"[{model}] Attendance Prediction",
                         value=f'{val:,.2f}', color=COLOR.BLUE, delta=delta)
@@ -106,8 +119,11 @@ with metric_cols[-1]:
     #     st.session_state["compare_year"] = 2019
     # compare_year = st.slider("Year for comparison",
     #                          2015, 2019, 2019, 1, label_visibility="hidden")
+
+    delta = baseline_value - real_value  # type: ignore
+
     cd.display_dial(title=f"Moving Average 5-10 Attendance ({target_date.strftime('%A, %B %d, %Y')})",
-                    value=f"{baseline_value:,.2f}", color=COLOR.DARK_BLUE)
+                    value=f"{baseline_value:,.2f}", color=COLOR.DARK_BLUE, delta=delta)
     # st.session_state["compare_year"] = compare_year
 
 # show MA 5-10 (this year)

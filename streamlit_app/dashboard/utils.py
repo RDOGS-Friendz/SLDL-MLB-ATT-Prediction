@@ -68,4 +68,6 @@ def get_baseline_value(df_home: pd.DataFrame, date_str: str, team_name: str):
 
     baseline_value = df_home[(df_home["date"] == target_date) & (
         df_home["team2_name"] == team_name)]["previous_5_to_10MA"].values[0]  # type: ignore
-    return target_date, baseline_value
+    real_value = df_home[(df_home["date"] == target_date) & (
+        df_home["team2_name"] == team_name)]["attendance"].values[0]  # type: ignore
+    return target_date, baseline_value, real_value
