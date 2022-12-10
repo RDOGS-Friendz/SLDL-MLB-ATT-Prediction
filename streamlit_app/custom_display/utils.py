@@ -1,5 +1,5 @@
 from collections import defaultdict, namedtuple
-from htbuilder import div, big, h2, styles
+from htbuilder import div, big, h2, styles, span
 from htbuilder.units import rem
 from math import floor
 import altair as alt
@@ -57,10 +57,16 @@ def display_dial(title, value, color, delta=None):
             delta_color = "#DD2728"
             prefix = '\u2193'
         delta_div = div(style=styles(
-            font_size=rem(0.9),
+            font_size=rem(1),
             color=delta_color,
             margin=(rem(.8), 0, 0, 0),
-        ))(f"{prefix} {delta:,}")  # format with comma
+        ))(f"{prefix} {delta:,.2f}",
+           #    span(style=styles(
+           #        font_size=rem(0.5),
+           #        color="#808080",
+           #        margin=(rem(.8), 0, 0, 0),
+           #    ))(" (compared to MA 5-10 prediction)")
+           )  # format with comma
     else:
         delta_div = ""
 
@@ -72,12 +78,12 @@ def display_dial(title, value, color, delta=None):
                 padding=(rem(0.8), 0, rem(3), 0),
             )
         )(
-            h2(style=styles(font_size=rem(.975),
+            h2(style=styles(font_size=rem(1.05),
                             font_weight=600, padding=0))(title),
-            big(style=styles(font_size=rem(3), font_weight=800, line_height=1))(
+            big(style=styles(font_size=rem(2.25), font_weight=800, line_height=1))(
                 value
             ),
-            delta_div
+            delta_div,
         ),
         unsafe_allow_html=True,
     )

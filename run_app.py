@@ -19,6 +19,7 @@ from streamlit_app import instruction as instr
 from streamlit_app import form as form
 from streamlit_app import custom_display as cd
 from streamlit_app import dashboard as dashboard
+from streamlit_app import model as mdl
 
 
 class Color:
@@ -69,9 +70,8 @@ processed_input = {"Date": input_params["date"].strftime("%A, %B %d, %Y"),
                    "Weather": input_params["weather"],
                    "Temperature": input_params["temperature"], "Model": input_params["model"]}
 
-# read models
-_model_input = dashboard.st_to_model(input_params, df=baseline_df,  # type: ignore
-                                     team_set=set(team_dict.keys()))
+# model input
+_model_input = mdl.streamlit_to_model(input_params)  # type: ignore
 
 # --------------------------------------------------------------------------------------------------
 # Draw results
@@ -102,8 +102,13 @@ metric_cols = st.columns([1 for _ in range(len(input_params['model']) + 1)])
 
 for i, model in enumerate(input_params["model"]):
     with metric_cols[i]:
+        # make sure that the model has the str type
+        _tmp_model = mdl.Model(str(model))
+        val = _tmp_model.predict(_model_input)[0]
+        delta = val - baseline_value
+
         cd.display_dial(title=f"[{model}] Attendance Prediction",
-                        value="10,000", color=COLOR.BLUE, delta=-3000)
+                        value=f'{val:,.2f}', color=COLOR.BLUE, delta=delta)
 
 with metric_cols[-1]:
     # if "compare_year" not in st.session_state:
@@ -111,7 +116,7 @@ with metric_cols[-1]:
     # compare_year = st.slider("Year for comparison",
     #                          2015, 2019, 2019, 1, label_visibility="hidden")
     cd.display_dial(title=f"Moving Average 5-10 Attendance ({target_date.strftime('%A, %B %d, %Y')})",
-                    value=f"{baseline_value:,.1f}", color=COLOR.DARK_BLUE)
+                    value=f"{baseline_value:,.2f}", color=COLOR.DARK_BLUE)
     # st.session_state["compare_year"] = compare_year
 
 # show MA 5-10 (this year)
