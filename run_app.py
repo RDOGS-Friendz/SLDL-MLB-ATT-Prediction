@@ -68,7 +68,6 @@ target_date, baseline_value, real_value = dashboard.get_baseline_value(
 # processed dict
 if target_date == input_params["date"]:
     processed_input = {"Date": input_params["date"].strftime("%A, %B %d, %Y"),
-                       #    "Nearest Date": target_date.strftime("%A, %B %d, %Y"),
                        "Start Hour": input_params["start_hour"],
                        "Playoff": input_params["season_type"],
                        "Home Team": f'{team_dict[input_params["home_team"]]} ({input_params["home_team"]})',
@@ -79,7 +78,7 @@ if target_date == input_params["date"]:
                        "Model": input_params["model"]}
 else:
     processed_input = {"Date": input_params["date"].strftime("%A, %B %d, %Y"),
-                       "Nearest Date": target_date.strftime("%A, %B %d, %Y"),
+                       "Nearest Game Date": target_date.strftime("%A, %B %d, %Y"),
                        "Start Hour": input_params["start_hour"],
                        "Playoff": input_params["season_type"],
                        "Home Team": f'{team_dict[input_params["home_team"]]} ({input_params["home_team"]})',
@@ -99,7 +98,7 @@ st.markdown(
     f"## Dashboard")
 
 
-with st.expander("ℹ Input Parameters Information", expanded=True):
+with st.expander("ℹ Game Information (Input Params)", expanded=True):
     cd.display_dict(processed_input)
 
 metric_cols = st.columns([1 for _ in range(len(input_params['model']) + 1)])
