@@ -50,8 +50,9 @@ stadium_lst = list(instr.get_team_dict(type="abbr:stadium").values())
 weather_lst = list(instr.get_weather_list())
 model_lst = instr.get_model_list()
 baseline_model_lst = instr.get_model_list(True)
-baseline_df = instr.get_baseline_df()
+baseline_df = instr.get_baseline_df()  # raw test set
 summary_df, raw_df = instr.get_ft_importance_df()
+model_pf_df = instr.get_model_pf_df()
 
 input_params = form.create_form(team_lst=team_lst, weather_lst=weather_lst,
                                 model_lst=model_lst, baseline_model_lst=baseline_model_lst)
@@ -61,14 +62,16 @@ input_params = form.create_form(team_lst=team_lst, weather_lst=weather_lst,
 
 # processed dict
 processed_input = {"Date": input_params["date"].strftime("%A, %B %d, %Y"),
-                   "Start Hour": input_params["time"],
+                   "Start Hour": input_params["start_hour"],
                    "Playoff": input_params["season_type"],
-                   "Home Team": input_params["home_team"],
-                   "Away Team": input_params["away_team"],
+                   "Home Team": f'{team_dict[input_params["home_team"]]} ({input_params["home_team"]})',
+                   "Away Team": f'{team_dict[input_params["away_team"]]} ({input_params["away_team"]})',
                    "Weather": input_params["weather"],
                    "Temperature": input_params["temperature"], "Model": input_params["model"]}
 
 # read models
+_model_input = dashboard.st_to_model(input_params, df=baseline_df,  # type: ignore
+                                     team_set=set(team_dict.keys()))
 
 # --------------------------------------------------------------------------------------------------
 # Draw results
@@ -83,16 +86,17 @@ with st.expander("ℹ Input Parameters Information", expanded=True):
 
 # process data
 df_home = baseline_df[baseline_df["team2_name"] ==
-                      input_params["home_team"].split(' (')[1].replace(')', '')]
+                      input_params["home_team"]]
 df_home["date"] = pd.to_datetime(df_home["start_time"].apply(
     lambda x: datetime.datetime.strptime(x, "%Y-%m-%d %H:%M:%S").date()))
+
 
 # show attendance prediction (with comparison to avg attendance in previous years)
 # _, col_1, _,  col_2, _ = st.columns([0.5, 1, 0.5, 1, 0.5])
 st.markdown("### Attendance Prediction")
 
 target_date, baseline_value = dashboard.get_baseline_value(
-    df_home, input_params["date"], input_params["home_team"].split(' (')[1].replace(')', ''))  # type: ignore
+    df_home, input_params["date"], input_params["home_team"])  # type: ignore
 
 metric_cols = st.columns([1 for _ in range(len(input_params['model']) + 1)])
 
@@ -162,3 +166,14 @@ with st.expander("🔢 Model Peformance", expanded=False):
     # top important features for each model
 
     st.markdown("#### Model Peformance Summary Table")
+
+    # st.write(model_pf_df.columns)
+    gd = GridOptionsBuilder.from_dataframe(model_pf_df)
+    gd.configure_pagination(
+        enabled=False, paginationPageSize=10, paginationAutoPageSize=False)
+    # select box
+    gd.configure_column(field="Params",
+                        wrapText=True, autoHeight=True, cellStyle={'wordBreak': 'normal'}, width=300)
+
+    AgGrid(model_pf_df, gridOptions=gd.build(), height=300,
+           width="100%")

@@ -41,7 +41,7 @@ def create_form(team_lst: list, weather_lst: list, model_lst: list, baseline_mod
             game_date, game_time)  # type: ignore
 
         input_params["date"] = game_date
-        input_params["time"] = int(game_time.strftime("%H"))
+        input_params["start_hour"] = int(game_time.strftime("%H"))
         input_params["datetime"] = game_datetime
 
         # season type
@@ -51,9 +51,9 @@ def create_form(team_lst: list, weather_lst: list, model_lst: list, baseline_mod
         col_1, col_2 = st.columns([1, 1])
         st.selectbox
         input_params["home_team"] = col_1.selectbox(
-            "Select home team", team_lst, index=0)
+            "Select home team", team_lst, index=0).split(" (")[1].split(")")[0]  # type: ignore
         input_params["away_team"] = col_2.selectbox(
-            "Select away team", team_lst, index=1)
+            "Select away team", team_lst, index=1).split(" (")[1].split(")")[0]  # type: ignore
         if input_params["home_team"] == input_params["away_team"]:
             st.error("Home team and away team cannot be the same.")
             error_flag = True

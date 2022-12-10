@@ -26,6 +26,16 @@ def get_ft_importance_df():
     return summary_df, raw_df
 
 
+@st.cache(ttl=60 * 60 * 24, allow_output_mutation=True)
+def get_model_pf_df():
+    # model performance table
+    path = 'streamlit_app/instruction/model_perf_summary.xlsx'
+    df = pd.read_excel(path, engine='openpyxl').drop(
+        columns=['Description'], axis=1)
+
+    return df
+
+
 @st.cache(ttl=60 * 60 * 24)
 def get_model_list(baseline=False):
     if not baseline:
@@ -47,6 +57,10 @@ def get_model_list(baseline=False):
 
 @st.cache(ttl=60 * 60 * 24)
 def get_team_dict(type="all"):
+
+    # team_list = ['ARI', 'ATL', 'BAL', 'BOS', 'CHC', 'CHW', 'CIN', 'CLE', 'COL', 'DET', 'HOU', 'KCR', 'LAA', 'LAD',
+    #              'MIA', 'MIL', 'MIN', 'NYM', 'NYY', 'OAK', 'PHI', 'PIT', 'SDP', 'SEA', 'SFG', 'STL', 'TBR', 'TEX', 'TOR', 'WSN']
+
     # Get all MLB team name list
     full_team_dict = {
         # abbr: full name
@@ -55,13 +69,13 @@ def get_team_dict(type="all"):
         "BAL": "Baltimore Orioles",
         "BOS": "Boston Red Sox",
         "CHC": "Chicago Cubs",
-        "CWS": "Chicago White Sox",
+        "CHW": "Chicago White Sox",
         "CIN": "Cincinnati Reds",
         "CLE": "Cleveland Indians",
         "COL": "Colorado Rockies",
         "DET": "Detroit Tigers",
         "HOU": "Houston Astros",
-        "KC": "Kansas City Royals",
+        "KCR": "Kansas City Royals",
         "LAA": "Los Angeles Angels",
         "LAD": "Los Angeles Dodgers",
         "MIA": "Miami Marlins",
@@ -72,14 +86,14 @@ def get_team_dict(type="all"):
         "OAK": "Oakland Athletics",
         "PHI": "Philadelphia Phillies",
         "PIT": "Pittsburgh Pirates",
-        "SD": "San Diego Padres",
-        "SF": "San Francisco Giants",
+        "SDP": "San Diego Padres",
         "SEA": "Seattle Mariners",
+        "SFG": "San Francisco Giants",
         "STL": "St. Louis Cardinals",
-        "TB": "Tampa Bay Rays",
+        "TBR": "Tampa Bay Rays",
         "TEX": "Texas Rangers",
         "TOR": "Toronto Blue Jays",
-        "WSH": "Washington Nationals",
+        "WSN": "Washington Nationals",
     }
 
     full_team_stadium_dict = {
@@ -89,13 +103,13 @@ def get_team_dict(type="all"):
         "BAL": "Oriole Park at Camden Yards",
         "BOS": "Fenway Park",
         "CHC": "Wrigley Field",
-        "CWS": "Guaranteed Rate Field",
+        "CHW": "Guaranteed Rate Field",
         "CIN": "Great American Ball Park",
         "CLE": "Progressive Field",
         "COL": "Coors Field",
         "DET": "Comerica Park",
         "HOU": "Minute Maid Park",
-        "KC": "Kauffman Stadium",
+        "KCR": "Kauffman Stadium",
         "LAA": "Angel Stadium of Anaheim",
         "LAD": "Dodger Stadium",
         "MIA": "Marlins Park",
@@ -106,14 +120,14 @@ def get_team_dict(type="all"):
         "OAK": "Oakland Coliseum",
         "PHI": "Citizens Bank Park",
         "PIT": "PNC Park",
-        "SD": "Petco Park",
-        "SF": "Oracle Park",
+        "SDP": "Petco Park",
+        "SFG": "Oracle Park",
         "SEA": "T-Mobile Park",
         "STL": "Busch Stadium",
-        "TB": "Tropicana Field",
+        "TBR": "Tropicana Field",
         "TEX": "Globe Life Field",
         "TOR": "Rogers Centre",
-        "WSH": "Nationals Park",
+        "WSN": "Nationals Park",
     }
 
     if type == "abbr:stadium":
