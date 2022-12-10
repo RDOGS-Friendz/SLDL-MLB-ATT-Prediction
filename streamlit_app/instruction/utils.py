@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+import datetime
 
 
 def get_weather_list():
@@ -7,14 +9,32 @@ def get_weather_list():
 
 
 @st.cache(ttl=60 * 60 * 24)
+def get_baseline_df():
+    path = 'models-v2-lle/testset_w_lle.csv'
+    df = pd.read_csv(path)
+
+    return df
+
+
+@st.cache(ttl=60 * 60 * 24)
+def get_ft_importance_df():
+    path = 'streamlit_app/instruction/model_feature_importance.xlsx'
+    summary_df = pd.read_excel(path, sheet_name='Summary', engine='openpyxl')
+    raw_df = pd.read_excel(
+        path, sheet_name='Ft. Importance Table', engine='openpyxl')
+
+    return summary_df, raw_df
+
+
+@st.cache(ttl=60 * 60 * 24)
 def get_model_list(baseline=False):
     if not baseline:
         model_list = [
-            "Random Forest",
             "XGBoost",
-            "LightGBM",
-            "AdaBoost",
             "Stacking",
+            "Ridge",
+            "Gradient Boosting",
+            "Deep Learning Regression",
             "SVM"
         ]
     else:
@@ -116,8 +136,11 @@ def create_usage_instruction():
     """Create a description of the instructions."""
     st.markdown(
         """
-        ### How to use this app
-        lorem ipsum dolor sit amet 
+        ### Our Models
+
+        - Models includes Lasso, Ridge, Gradient Boosting, Bagging, SVM, and XGBoost
+        - After training above models, we choose 3~5 models with best parameters to do stacking
+        - We use 5-fold cross validation to ensure model robustness and avoid overfitting
         """
     )
 
@@ -125,8 +148,12 @@ def create_usage_instruction():
 
     st.markdown(
         """
-        ### How to interpret the results
-        lorem ipsum dolor sit amet
+        ### Evaluation Metrics
+        
+        - MSE
+        - RMSE
+        - MAE
+        - MAPE
         """
     )
 
@@ -134,18 +161,13 @@ def create_usage_instruction():
 
     st.markdown(
         """
-        ### Behind the scenes
-        lorem ipsum dolor sit amet
-        """
-    )
-
-    st.markdown("")
-    st.markdown(
-        """
-        ### References
-        To try this app in Streamlit Sharing, you need to add your Twitter API credentials in the Secrets manager:
-        1.  Go to your app dashboard at `https://share.streamlit.io/`
-        2.  Find your app and click on `Edit secrets`:
+        ### How We Build the Models
+        
+        1. 5-fold on training set
+        2. Find the best hyper parameters
+        3. 5-fold as the final training set, re-train with the best hyper parameters
+        4. Save model
+        5. Measure the performance on the test set
         """
     )
 

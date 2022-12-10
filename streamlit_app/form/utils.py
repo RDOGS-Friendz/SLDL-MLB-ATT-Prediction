@@ -81,37 +81,6 @@ def create_form(team_lst: list, weather_lst: list, model_lst: list, baseline_mod
             error_flag = True
             # st.stop()
 
-        # st.markdown(
-        #     div(
-        #         style=styles(
-        #             # center
-        #             text_align="center",
-        #             # small font
-        #             font_size=rem(0.8),
-        #             # gray color
-        #             color="#666666",
-        #         )
-        #     )("Please fill all the fields above"), unsafe_allow_html=True)
-
-        # st.markdown(
-        #     hr(
-        #         style=styles(
-        #             margin=(rem(.5), 0, rem(1), 0),
-        #             # height=rem(0.1),
-        #             # color=PRIMARY_COLOR,
-        #             # background_color=PRIMARY_COLOR,
-        #         )
-        #     ),
-        #     unsafe_allow_html=True,
-        # )
-
-        # input_params["baseline_model"] = st.multiselect(
-        #     "Select baseline model(s)", baseline_model_lst, help="Baseline models are used to compare with the prediction models. A maximum of two baseline models can be selected. Leave blank if you don't need any comparisons.", max_selections=2)
-
-        # col_1, col_2, col_3 = st.columns([1, 2, 1])
-        # input_params["enable_PCA"] = col_1.checkbox(
-        #     "Enable PCA", False)
-
         submit_button = st.form_submit_button(label="Submit")
 
     if submit_button and not error_flag:
