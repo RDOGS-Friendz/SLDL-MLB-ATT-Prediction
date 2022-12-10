@@ -151,7 +151,7 @@ class Model(object):
         # path = "../models-v2-lle/lasso_model_20221204_235019.sav"
         path = {
             "XGBoost": "models-v2-lle/model/xgboost_model_20221207_235653.sav",
-            "Stacking": "models-v2-lle/model/stacking_model_20221204_214116.sav",
+            "Stacking": "models-v2-lle/model/stacking_model_20221210_210139.sav",
             "Ridge": "models-v2-lle/model/ridge_model_20221207_235056.sav",
             "Gradient Boosting": "models-v2-lle/model/gradientboosting_model_20221207_235438.sav",
             "SVM": "models-v2-lle/model/svm_model_20221207_235128.sav"
