@@ -60,7 +60,6 @@ df_home["date"] = pd.to_datetime(df_home["start_time"].apply(
 
 # show attendance prediction (with comparison to avg attendance in previous years)
 # _, col_1, _,  col_2, _ = st.columns([0.5, 1, 0.5, 1, 0.5])
-st.markdown("### Attendance Prediction")
 
 target_date, baseline_value, real_value = dashboard.get_baseline_value(
     df_home, input_params["date"], input_params["home_team"])  # type: ignore
@@ -100,6 +99,8 @@ st.markdown(
 
 with st.expander("ℹ Game Information (Input Params)", expanded=True):
     cd.display_dict(processed_input)
+
+st.markdown("### Attendance Prediction")
 
 metric_cols = st.columns([1 for _ in range(len(input_params['model']) + 1)])
 
