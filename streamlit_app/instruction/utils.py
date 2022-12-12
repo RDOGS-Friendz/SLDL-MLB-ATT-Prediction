@@ -45,7 +45,7 @@ def get_model_list(baseline=False):
             "Ridge",
             "Gradient Boosting",
             "SVM",
-            "Deep Learning Regression",
+            "Deep Learning Regression"
         ]
     else:
         model_list = [
