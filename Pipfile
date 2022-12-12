@@ -175,6 +175,7 @@ widgetsnbextension = "==4.0.4"
 wrapt = "==1.14.1"
 xgboost = "==1.7.2"
 zipp = "==3.10.0"
+torch = "*"
 
 [dev-packages]
 autopep8 = "*"

@@ -194,12 +194,12 @@ class Model(object):
                 self.model = pickle.load(f)
 
     def predict(self, data):
-        # print(data)
         if self.type == "Deep Learning Regression":
-            return self.model(torch.Tensor(data)).item()
+            _tmp_data = [self.model(torch.Tensor(data)).item()]
+            return _tmp_data
         else:
             data = np.array(data).reshape(1, -1)
-            return self.model.predict(data)
+            return self.model.predict(data)  # type: ignore
 
 
 if __name__ == "__main__":
