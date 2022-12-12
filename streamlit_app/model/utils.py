@@ -6,6 +6,9 @@ import pickle
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 import streamlit as st
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
 
 
 class InputInfo(TypedDict):
@@ -16,6 +19,30 @@ class InputInfo(TypedDict):
     weather: str
     temperature: float
     season_type: bool
+
+
+class Net(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.fc1 = nn.Linear(107, 1024)
+        self.fc2 = nn.Linear(1024, 512)
+        self.fc3 = nn.Linear(512, 128)
+        self.fc4 = nn.Linear(128, 1)
+        nn.init.xavier_uniform_(self.fc1.weight)
+        nn.init.zeros_(self.fc1.bias)
+        nn.init.xavier_uniform_(self.fc2.weight)
+        nn.init.zeros_(self.fc2.bias)
+        nn.init.xavier_uniform_(self.fc3.weight)
+        nn.init.zeros_(self.fc3.bias)
+        nn.init.xavier_uniform_(self.fc4.weight)
+        nn.init.zeros_(self.fc4.bias)
+
+    def forward(self, x):
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = F.relu(self.fc3(x))
+
+        return self.fc4(x)
 
 
 # afternoon, evening, night, noon
@@ -154,20 +181,30 @@ class Model(object):
             "Stacking": "models-v2-lle/model/stacking_model_20221210_210139.sav",
             "Ridge": "models-v2-lle/model/ridge_model_20221207_235056.sav",
             "Gradient Boosting": "models-v2-lle/model/gradientboosting_model_20221207_235438.sav",
-            "SVM": "models-v2-lle/model/svm_model_20221207_235128.sav"
+            "SVM": "models-v2-lle/model/svm_model_20221207_235128.sav",
+            "Deep Learning Regression": "models-v2-lle/model/deep_regression.pt",
         }
-        with open(path[type], "rb") as f:
-            self.model = pickle.load(f)
+        self.type = type
+        if type == "Deep Learning Regression":
+            self.model = Net()
+            self.model.load_state_dict(torch.load(path[type]))
+            self.model.eval()
+        else:
+            with open(path[type], "rb") as f:
+                self.model = pickle.load(f)
 
     def predict(self, data):
         # print(data)
-        data = np.array(data).reshape(1, -1)
-        return self.model.predict(data)
+        if self.type == "Deep Learning Regression":
+            return self.model(torch.Tensor(data)).item()
+        else:
+            data = np.array(data).reshape(1, -1)
+            return self.model.predict(data)
 
 
 if __name__ == "__main__":
 
-    model = Model("Stacking")
+    model = Model("Deep Learning Regression")
 
     r = streamlit_to_model(
         {
