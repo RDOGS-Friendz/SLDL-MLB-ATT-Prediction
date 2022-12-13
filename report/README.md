@@ -13,6 +13,7 @@
 
 ## Table of Contents
 
+```
 📦report
  ┣ 📂data
  ┃ ┗ 📂players
@@ -33,6 +34,7 @@
  ┃ ┣ 📜requirements.txt
  ┃ ┗ 📜run_app.py
  ┗ 📜README.md
+```
 
 ## Data Collection
 ### [Web scraping]()
