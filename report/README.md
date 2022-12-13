@@ -63,3 +63,7 @@ In this section, we build deep learning model with data processed after [dimensi
 ## Streamlit
 In this section, we deploy a prediction website with [model v2](#model-building-v2). The link is [https://mlb-att-pred.streamlit.app](https://mlb-att-pred.streamlit.app)
 
+### Run locally
+1. `cd streamlit`
+2. `pip install -r requirements.txt`
+3. `python run_app.py`
