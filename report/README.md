@@ -14,6 +14,8 @@
 ## Table of Contents
 
 📦report
+ ┣ 📂data
+ ┃ ┗ 📂players
  ┣ 📂data-collection
  ┃ ┗ 📜.gitkeep
  ┣ 📂data-engineering
@@ -21,11 +23,15 @@
  ┣ 📂model-v1
  ┃ ┗ 📜.gitkeep
  ┣ 📂model-v2
- ┃ ┣ 📜.gitkeep
  ┃ ┣ 📜statistical_learning_model.html
- ┃ ┗ 📜statistical_learning_model.ipynb
+ ┃ ┣ 📜statistical_learning_model.ipynb
+ ┃ ┣ 📜testset_w_lle.csv
+ ┃ ┗ 📜trainset_w_lle.csv
  ┣ 📂streamlit
- ┃ ┗ 📜.gitkeep
+ ┃ ┣ 📂model
+ ┃ ┣ 📂streamlit_app
+ ┃ ┣ 📜requirements.txt
+ ┃ ┗ 📜run_app.py
  ┗ 📜README.md
 
 ## Data Collection
