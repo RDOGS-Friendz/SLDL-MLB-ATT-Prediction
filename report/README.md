@@ -92,3 +92,9 @@ In this section, we deploy a prediction website with [model v2](#model-building-
 2. The best MAPE is 0.2302, Ridge regression.
 3. Stacking model considers various models, and the result is pretty good.
 4. Teams, players, stadium, weekday are actually the most important factor to predict attendance number.
+5. Our model outperformed baseline(simple moving average) by 10% MAPE
+
+## Future Work
+1. Improve model predict ability
+2. There may still be features that are important but have not been included in our models
+3. Our work can be further applied to CPBL, contributing to Taiwanese baseball league and fans!
