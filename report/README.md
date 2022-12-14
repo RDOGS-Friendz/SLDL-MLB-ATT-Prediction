@@ -33,6 +33,7 @@
  ┃ ┣ 📜dimension_reduction.html
  ┃ ┗ 📜dimension_reduction.ipynb
  ┣ 📂model-v1
+ ┃ ┣ 📜statistical_learning.html
  ┃ ┗ 📜statistical-learning.ipynb
  ┣ 📂model-v2
  ┃ ┣ 📜deep-learning.html
