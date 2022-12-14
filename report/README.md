@@ -45,6 +45,8 @@
  ┃ ┣ 📂streamlit_app
  ┃ ┗ 📜run_app.py
  ┗ 📜README.md
+ ┗ 📜presentation.mp4
+ ┗ 📜presentation.pdf
 ```
 
 ## Data Collection
