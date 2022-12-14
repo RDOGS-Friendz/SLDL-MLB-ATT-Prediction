@@ -10,7 +10,7 @@ def get_weather_list():
 
 @st.cache(ttl=60 * 60 * 24)
 def get_baseline_df():
-    path = 'models-v2-lle/testset_w_lle.csv'
+    path = 'model/testset_w_lle.csv'
     df = pd.read_csv(path)
 
     return df
