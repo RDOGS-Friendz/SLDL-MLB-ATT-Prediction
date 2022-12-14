@@ -85,7 +85,7 @@ In this section, we deploy a prediction website with [model v2](#model-building-
 ### Run locally
 1. `cd streamlit`
 2. `pip install -r requirements.txt`
-3. `python run_app.py`
+3. `streamlit run run_app.py`
 
 ## Conclusion
 1. The best RMSE is 6004, XGBoost model.
