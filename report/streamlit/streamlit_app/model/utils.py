@@ -51,7 +51,7 @@ def streamlit_to_model(data: InputInfo) -> List:
 
     @st.cache(ttl=60 * 60 * 24 * 7)
     def load_data():
-        return pd.read_csv("models-v2-lle/testset_w_lle.csv")
+        return pd.read_csv("model/testset_w_lle.csv")
 
     df = load_data()
 
