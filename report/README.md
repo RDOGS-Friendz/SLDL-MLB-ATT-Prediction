@@ -44,6 +44,8 @@
  ┃ ┣ 📂model
  ┃ ┣ 📂streamlit_app
  ┃ ┗ 📜run_app.py
+ ┃ 📜presentation.pdf
+ ┃ 📜presentation.mp4
  ┗ 📜README.md
 ```
 
