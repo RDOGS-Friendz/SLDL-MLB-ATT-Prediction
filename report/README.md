@@ -16,47 +16,58 @@
 ```
 📦report
  ┣ 📂data
+ ┃ ┣ 📂baseball-reference
  ┃ ┗ 📂players
  ┣ 📂data-collection
- ┃ ┗ 📜.gitkeep
+ ┃ ┣ 📜data_exploration.html
+ ┃ ┣ 📜data_exploration.ipynb
+ ┃ ┣ 📜descriptive_statistics.html
+ ┃ ┣ 📜descriptive_statistics.ipynb
+ ┃ ┣ 📜sportsdataio.html
+ ┃ ┣ 📜sportsdataio.ipynb
+ ┃ ┣ 📜web_scrapping.html
+ ┃ ┗ 📜web_scrapping.ipynb
  ┣ 📂data-engineering
- ┃ ┗ 📜.gitkeep
+ ┃ ┣ 📜data_cleaning.html
+ ┃ ┣ 📜data_cleaning.ipynb
+ ┃ ┣ 📜dimension_reduction.html
+ ┃ ┗ 📜dimension_reduction.ipynb
  ┣ 📂model-v1
- ┃ ┗ 📜.gitkeep
+ ┃ ┗ 📜statistical-learning.ipynb
  ┣ 📂model-v2
+ ┃ ┣ 📜deep-learning.html
+ ┃ ┣ 📜deep-learning.ipynb
  ┃ ┣ 📜statistical_learning_model.html
  ┃ ┣ 📜statistical_learning_model.ipynb
- ┃ ┣ 📜testset_w_lle.csv
- ┃ ┗ 📜trainset_w_lle.csv
  ┣ 📂streamlit
  ┃ ┣ 📂model
  ┃ ┣ 📂streamlit_app
- ┃ ┣ 📜requirements.txt
  ┃ ┗ 📜run_app.py
  ┗ 📜README.md
 ```
 
 ## Data Collection
-### [Web scraping]()
+### [Web scraping](data-collection/web_scrapping.ipynb)
 In this section, we collect data from [baseball reference](https://www.baseball-reference.com/).
 
-### [API]()
+### [API](data-collection/sportsdataio.ipynb)
 In this section, we collect data from [sportsdataio](https://sportsdata.io/).
 
-### [Descrptive Statistics]()
+### [Descrptive Statistics](data-collection/descriptive_statistics.ipynb) & [Data Exploration](data-collection/data_exploration.ipynb)
 In this section, we analyze data we collected, find out the potential important factor and seek what data engineering we can do.
 
+
 ## Data Engineering
-### [Data Cleaning & Processing]()
+### [Data Cleaning & Processing](data-engineering/data_cleaning.ipynb)
 In this section, we clean the date we collected, perform one-hot encoding on forecast weather, team players, home team, away team, season type, month and venue. And then generate some features such as weekday, start_hour, is_holiday, team's history winning rate, winning streak, etc.
 
 As to player data, we select players whose salary over 5 millinos and belong to all star.
 
-### [Dimension Reduction]()
+### [Dimension Reduction](data-engineering/dimension_reduction.ipynb)
 In this section, we want reduce players dimension. We try all kinds of dimension reduction method and found that LLE performs best. 
 
 ## Model Building v1
-### [Statistical Learning Model]()
+### [Statistical Learning Model](model-v1/statistical-learning.ipynb)
 In this section, we build our model with original data processed at [data cleaning section](#data-cleaning--processing). Model includes KNN, lasso, ridge, decision tree, gradient boosting, adaboost, bagging, svm, and XGBoost. To avoid overfitting and enhance model robustness, we use 5-fold cross validation to find out the best parameters. After that, we train the model with all training set and then evaluate testing set with MSE, RMSE, MAE, MAPE.
 
 ## Model Building v2
@@ -65,7 +76,7 @@ In this section, we build our model with data processed after [dimension reducti
 
 After building above models, we choose 3~5 models with best performance at validation set to do stacking.
 
-### [Deep Learning Model]()
+### [Deep Learning Model](model-v2/deep-learning.ipynb)
 In this section, we build deep learning model with data processed after [dimension reduction](#dimension-reduction).
 
 ## Streamlit
@@ -79,4 +90,5 @@ In this section, we deploy a prediction website with [model v2](#model-building-
 ## Conclusion
 1. The best RMSE is 6004, XGBoost model.
 2. The best MAPE is 0.2302, Ridge regression.
-3. ...
+3. Stacking model considers various models, and the result is pretty good.
+4. Teams, players, stadium, weekday are actually the most important factor to predict attendance number.
